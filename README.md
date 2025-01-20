@@ -158,7 +158,7 @@ Extends Calendar Props with additional properties:
 | isVisible      | boolean    | Yes      | -       | Controls modal visibility     |
 | onClose        | () => void | Yes      | -       | Callback when modal is closed |
 | title          | string     | No       | -       | Modal title                   |
-| overlayOpacity | number     | No       | 0.5     | Opacity of modal overlay      |
+| overlayOpacity | number     | No       | 0.4     | Opacity of modal overlay      |
 
 
 ## Customization
