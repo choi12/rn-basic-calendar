@@ -1,0 +1,71 @@
+{
+  "name": "@choi12/rn-basic-calendar",
+  "version": "0.1.4",
+  "description": "A lightweight and customizable calendar component for React Native. Includes basic features like date marking and modal support.",
+  "private": false,
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "react-native": "lib/index.js",
+  "scripts": {
+    "clean": "rm -rf lib",
+    "reset": "rm -rf node_modules package-lock.json && npm install",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "pack:preview": "npm pack --dry-run",
+    "pack": "npm pack",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
+  },
+  "peerDependencies": {
+    "dayjs": "^1.11.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-native": ">=0.65.0 <1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "18.3.12",
+    "@types/react-native": "0.72.8",
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "dayjs": "1.11.13",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-import-resolver-typescript": "3.7.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-react": "7.37.4",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "prettier": "3.4.2",
+    "typescript": "5.3.3"
+  },
+  "files": [
+    "lib/",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [
+    "react-native",
+    "typescript",
+    "calendar",
+    "datepicker",
+    "date-picker",
+    "rn-calendar",
+    "customizable",
+    "lightweight"
+  ],
+  "homepage": "https://github.com/choi12/rn-basic-calendar#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choi12/rn-basic-calendar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/choi12/rn-basic-calendar/issues"
+  },
+  "author": "choi12",
+  "license": "MIT"
+}

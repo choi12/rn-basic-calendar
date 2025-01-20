@@ -1,0 +1,7 @@
+node_modules/
+lib/
+coverage/
+*.d.ts
+
+README.md
+*.md

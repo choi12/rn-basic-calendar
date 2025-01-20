@@ -1,0 +1,12 @@
+node_modules/
+src/
+tsconfig.json
+
+.gitignore
+.eslintignore
+.prettierignore
+
+.eslintrc
+.prettierrc
+
+screenshots/
