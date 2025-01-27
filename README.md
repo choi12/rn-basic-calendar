@@ -1,5 +1,7 @@
 # React Native Basic Calendar
 
+[한국어](./README.ko.md) | [English](./README.md)
+
 A lightweight and customizable calendar component for React Native apps,  
 featuring basic functionalities like date marking and modal support.  
 Available in both English and Korean languages.
@@ -72,7 +74,6 @@ This package requires the following peer dependencies:
     "react-native": ">=0.65.0 <1.0.0"
 }
 ```
-Note: React and React Native are likely already installed in your project. You only need to install dayjs if you haven't installed it yet.
 
 
 ## Types
@@ -238,6 +239,35 @@ const customStyles = {
   colors={customColors}
   styles={customStyles}
 />
+```
+
+
+## Testing
+
+The package includes comprehensive test coverage for all components and utilities:
+
+- **Components**
+  - Calendar: Core calendar functionality, date selection, navigation, and styling
+  - CalendarModal: Modal behavior, interactions, and customization
+  - WeekdayHeader: Localization and layout
+  - MonthSelector: Month navigation and boundary handling
+  - Day: Date rendering, selection, and marker display
+
+- **Hooks**
+  - useCalendar: Date grid generation and month calculations
+  - useCalendarState: State management and month navigation
+
+- **Utils**
+  - Date utilities: Range validation, month comparison, and weekend checks
+  - Locale utilities: Language configuration for EN/KO support
+
+Run tests using:
+```bash
+# Using npm
+npm test
+
+# Using yarn
+yarn test
 ```
 
 
