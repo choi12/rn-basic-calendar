@@ -4,7 +4,7 @@ import dayjs, { Dayjs } from 'dayjs';
 
 import { CalendarDays } from '../types';
 
-interface UseCalendarProps {
+export interface UseCalendarProps {
   date: Dayjs;
 }
 

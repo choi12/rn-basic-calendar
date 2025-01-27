@@ -13,9 +13,9 @@ export const isDateOutOfRange = (
   return !isCurrentMonth || isBeforeMinDate || isAfterMaxDate;
 };
 
-export const isMonthOutOfRange = (selectedMonth: Dayjs, date?: Dayjs): boolean => {
-  if (!date) return false;
-  return selectedMonth.isSame(date, 'month');
+export const isMonthLimit = (currentMonth: Dayjs, boundaryDate?: Dayjs): boolean => {
+  if (!boundaryDate) return false;
+  return currentMonth.isSame(boundaryDate, 'month');
 };
 
 export const checkWeekend = (weekdayIndex: number): boolean => {

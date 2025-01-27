@@ -5,8 +5,8 @@ import { View, Pressable, Text } from 'react-native';
 import { defaultStyles } from './styles';
 import { getArrowStyles, getMonthTextStyles } from './styleUtils';
 import { MonthSelectorProps } from './types';
-import { MONTH_FORMAT } from '../../../../constants/calendar';
-import { isMonthOutOfRange } from '../../../../utils/date';
+import { MONTH_FORMAT, NAVIGATION_BUTTON_TEXT, TEST_IDS } from '../../../../constants';
+import { isMonthLimit } from '../../../../utils';
 
 function MonthSelector({
   selectedMonth,
@@ -18,21 +18,27 @@ function MonthSelector({
   styles = {},
   colors,
 }: MonthSelectorProps) {
-  const isPrevDisabled = isMonthOutOfRange(selectedMonth, minDate);
-  const isNextDisabled = isMonthOutOfRange(selectedMonth, maxDate);
+  const isPrevDisabled = isMonthLimit(selectedMonth, minDate);
+  const isNextDisabled = isMonthLimit(selectedMonth, maxDate);
 
   const prevArrowStyles = getArrowStyles(isPrevDisabled, styles, colors);
   const nextArrowStyles = getArrowStyles(isNextDisabled, styles, colors);
   const monthTextStyles = getMonthTextStyles(styles, colors);
 
   return (
-    <View style={[defaultStyles.container, styles.containerStyle]}>
+    <View
+      style={[defaultStyles.container, styles.containerStyle]}
+      testID={TEST_IDS.MONTH_SELECTOR.CONTAINER}
+    >
       <Pressable
         onPress={onPreviousMonth}
         disabled={isPrevDisabled}
         style={[defaultStyles.button, styles.buttonStyle]}
+        testID={TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON}
       >
-        <Text style={prevArrowStyles}>{'<'}</Text>
+        <Text style={prevArrowStyles} testID={TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON_TEXT}>
+          {NAVIGATION_BUTTON_TEXT.PREV}
+        </Text>
       </Pressable>
       <Text style={monthTextStyles}>
         {selectedMonth.locale(language).format(MONTH_FORMAT[language])}
@@ -41,8 +47,11 @@ function MonthSelector({
         onPress={onNextMonth}
         disabled={isNextDisabled}
         style={[defaultStyles.button, styles.buttonStyle]}
+        testID={TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON}
       >
-        <Text style={nextArrowStyles}>{'>'}</Text>
+        <Text style={nextArrowStyles} testID={TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON_TEXT}>
+          {NAVIGATION_BUTTON_TEXT.NEXT}
+        </Text>
       </Pressable>
     </View>
   );

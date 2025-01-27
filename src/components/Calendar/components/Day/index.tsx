@@ -11,8 +11,8 @@ import {
   getTodayLabelStyles,
 } from './styleUtils';
 import { DayProps } from './types';
-import { TODAY_LABEL } from '../../../../constants/calendar';
-import { checkWeekend, isDateOutOfRange } from '../../../../utils/date';
+import { MARKER_FORMAT, TEST_IDS, TODAY_LABEL } from '../../../../constants';
+import { checkWeekend, isDateOutOfRange } from '../../../../utils';
 
 function Day({
   date,
@@ -32,7 +32,7 @@ function Day({
   const isWeekend = checkWeekend(weekdayIndex);
   const isDisabled = isDateOutOfRange(date, currentMonth, minDate, maxDate);
   const isMarked = useMemo(
-    () => markedDates.includes(date.format('YYYY-MM-DD')),
+    () => markedDates.includes(date.format(MARKER_FORMAT)),
     [date, markedDates],
   );
 
@@ -46,10 +46,15 @@ function Day({
   }, [onSelect, date]);
 
   return (
-    <Pressable style={containerStyles} onPress={handlePress} disabled={isDisabled}>
+    <Pressable
+      style={containerStyles}
+      onPress={handlePress}
+      disabled={isDisabled}
+      testID={TEST_IDS.DAY.DAY_BUTTON}
+    >
       <Text style={textStyles}>{date.date()}</Text>
       {isToday && <Text style={todayLabelStyles}>{TODAY_LABEL[language]}</Text>}
-      {isMarked && <View style={markerStyles} />}
+      {isMarked && <View style={markerStyles} testID={TEST_IDS.DAY.MARKER} />}
     </Pressable>
   );
 }

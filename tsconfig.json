@@ -15,8 +15,19 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@testing-library/*": ["./node_modules/@testing-library/*"]
+    }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": [
+    "node_modules",
+    "lib",
+    "**/__tests__/**",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "src/testUtils/**"
+  ]
 }

@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 
 import { defaultStyles } from './styles';
-import { COLORS } from '../../constants/colors';
+import { COLORS } from '../../constants';
 import { CalendarColors, CalendarStyles } from '../../types';
 
 export const getDefaultColors = (colors: CalendarColors = {}) => ({
