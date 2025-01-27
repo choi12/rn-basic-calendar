@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import dayjs from 'dayjs';
 
+import { TEST_IDS } from '../../constants';
 import Day from './components/Day';
 import MonthSelector from './components/MonthSelector';
 import WeekdayHeader from './components/WeekdayHeader';
@@ -18,7 +19,7 @@ import {
 import { CalendarProps } from './types';
 import useCalendar from '../../hooks/useCalendar';
 import useCalendarState from '../../hooks/useCalendarState';
-import { setupLocale } from '../../utils/locale';
+import { setupLocale } from '../../utils';
 
 export function Calendar({
   value,
@@ -49,7 +50,7 @@ export function Calendar({
   }, [language]);
 
   return (
-    <View style={containerStyles}>
+    <View style={containerStyles} testID={TEST_IDS.CALENDAR.CONTAINER}>
       <MonthSelector
         selectedMonth={currentMonth}
         onPreviousMonth={handlePrevMonth}
@@ -61,9 +62,13 @@ export function Calendar({
         colors={defaultColors}
       />
       <WeekdayHeader language={language} styles={weekdayHeaderStyles} colors={defaultColors} />
-      <View style={styles.daysContainerStyle}>
+      <View style={styles.daysContainerStyle} testID={TEST_IDS.CALENDAR.DAYS_CONTAINER}>
         {calendarDays.map((week, weekIndex) => (
-          <View key={weekIndex} style={[defaultStyles.week, styles.weekStyle]}>
+          <View
+            key={weekIndex}
+            style={[defaultStyles.week, styles.weekStyle]}
+            testID={TEST_IDS.CALENDAR.WEEK_CONTAINER}
+          >
             {week.map((day, dayIndex) => (
               <Day
                 key={dayIndex}
