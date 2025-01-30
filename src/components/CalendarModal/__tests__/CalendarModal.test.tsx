@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react-native';
 
 import { CalendarModal } from '../';
 import { TEST_IDS } from '../../../constants';
-import { expectTextStyleToMatch, expectViewStyleToMatch, BASE_TEST_DATE } from '../../../testUtils';
+import { BASE_TEST_DATE, expectTextStyleToMatch, expectViewStyleToMatch } from '../../../testUtils';
 import { CalendarModalProps } from '../types';
 
 describe('CalendarModal Component✨', () => {

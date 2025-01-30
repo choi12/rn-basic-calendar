@@ -17,6 +17,7 @@ import {
   getWeekdayHeaderStyles,
 } from './styleUtils';
 import { CalendarProps } from './types';
+import { validateCalendarProps } from './validateCalendarProps';
 import useCalendar from '../../hooks/useCalendar';
 import useCalendarState from '../../hooks/useCalendarState';
 import { setupLocale } from '../../utils';
@@ -32,6 +33,18 @@ export function Calendar({
   colors = {},
   markedDates = [],
 }: CalendarProps) {
+  validateCalendarProps({
+    value,
+    onChange,
+    minDate,
+    maxDate,
+    defaultValue,
+    language,
+    styles,
+    colors,
+    markedDates,
+  });
+
   const { currentMonth, handlePrevMonth, handleNextMonth } = useCalendarState({
     initialDate: defaultValue,
   });

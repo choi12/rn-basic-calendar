@@ -1,7 +1,6 @@
 import { locale } from 'dayjs';
 
-import { Language } from 'src/types';
-
+import { Language } from '../../types';
 import { setupLocale } from '../locale';
 
 describe('Locale Utilities✨', () => {
