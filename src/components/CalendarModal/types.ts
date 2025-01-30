@@ -8,3 +8,8 @@ export interface CalendarModalProps extends CalendarProps {
   styles?: CalendarModalStyles;
   overlayOpacity?: number;
 }
+
+export type ModalValidationProps = Pick<
+  CalendarModalProps,
+  'isVisible' | 'onClose' | 'overlayOpacity' | 'title'
+>;

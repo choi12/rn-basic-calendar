@@ -1,4 +1,4 @@
-import { Language } from '../types';
+import { Language } from '../../types';
 
 export const WEEKDAYS: Record<Language, string[]> = {
   en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -14,10 +14,3 @@ export const TODAY_LABEL: Record<Language, string> = {
   en: 'Today',
   ko: '오늘',
 };
-
-export const NAVIGATION_BUTTON_TEXT = {
-  PREV: '<',
-  NEXT: '>',
-} as const;
-
-export const MARKER_FORMAT: string = 'YYYY-MM-DD';

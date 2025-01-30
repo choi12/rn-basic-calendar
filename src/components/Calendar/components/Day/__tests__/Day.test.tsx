@@ -7,9 +7,9 @@ import Day from '../';
 import { COLORS, MARKER_FORMAT, TEST_IDS, TODAY_LABEL } from '../../../../../constants';
 import {
   withMockToday,
-  expectTextStyleToMatch,
-  expectViewStyleToMatch,
   BASE_TEST_DATE,
+  expectViewStyleToMatch,
+  expectTextStyleToMatch,
 } from '../../../../../testUtils';
 import { MarkedDates } from '../../../../../types';
 import { DayProps } from '../types';

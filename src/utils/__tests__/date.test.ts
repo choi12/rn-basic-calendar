@@ -1,3 +1,4 @@
+import { WEEKDAY_INDEXES, WEEKDAY_ONLY_INDEXES } from '../../constants';
 import { BASE_TEST_DATE } from '../../testUtils';
 import { isDateOutOfRange, isMonthLimit, checkWeekend } from '../date';
 
@@ -45,12 +46,12 @@ describe('Date Utilities✨', () => {
 
   describe('checkWeekend()', () => {
     it('checks if date is weekend', () => {
-      expect(checkWeekend(0)).toBe(true);
-      expect(checkWeekend(6)).toBe(true);
+      expect(checkWeekend(WEEKDAY_INDEXES.SUNDAY)).toBe(true);
+      expect(checkWeekend(WEEKDAY_INDEXES.SATURDAY)).toBe(true);
     });
 
     it('checks if date is weekday', () => {
-      [1, 2, 3, 4, 5].forEach(day => {
+      WEEKDAY_ONLY_INDEXES.forEach(day => {
         expect(checkWeekend(day)).toBe(false);
       });
     });

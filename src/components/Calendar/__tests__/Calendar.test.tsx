@@ -4,12 +4,12 @@ import { render, fireEvent } from '@testing-library/react-native';
 import dayjs from 'dayjs';
 
 import { Calendar } from '../';
-import { MARKER_FORMAT, MONTH_FORMAT, TEST_IDS } from '../../../constants';
+import { MARKER_FORMAT, MONTH_FORMAT, TEST_IDS, WEEKDAY_INDEXES } from '../../../constants';
 import {
   withMockToday,
+  BASE_TEST_DATE,
   expectViewStyleToMatch,
   expectTextStyleToMatch,
-  BASE_TEST_DATE,
 } from '../../../testUtils';
 import { MarkedDates, CalendarColors } from '../../../types';
 import { CalendarProps } from '../types';
@@ -64,18 +64,19 @@ describe('Calendar Component✨', () => {
     });
 
     it('allows selection only within min/max range', () => {
-      const minDate = testDate.add(4, 'day'); // 2025-01-05
-      const maxDate = testDate.add(14, 'day'); // 2025-01-15
-      const { getByText } = renderCalendarComponent({ minDate, maxDate });
+      const baseDate = testDate.add(7, 'day'); // 2025-01-08
+      const minDate = baseDate.subtract(1, 'day'); // 2025-01-07
+      const maxDate = baseDate.add(1, 'day'); // 2025-01-09
+      const { getByText } = renderCalendarComponent({ value: baseDate, minDate, maxDate });
 
-      fireEvent.press(getByText('4')); // before minDate
+      fireEvent.press(getByText('6')); // before minDate
       expect(mockOnChange).not.toHaveBeenCalled();
 
-      fireEvent.press(getByText('16')); // after maxDate
+      fireEvent.press(getByText('10')); // after maxDate
       expect(mockOnChange).not.toHaveBeenCalled();
 
-      fireEvent.press(getByText('10')); // within range
-      expect(mockOnChange).toHaveBeenCalledWith(testDate.set('date', 10));
+      fireEvent.press(getByText('8')); // within range
+      expect(mockOnChange).toHaveBeenCalledWith(testDate.set('date', 8));
     });
   });
 
@@ -171,12 +172,12 @@ describe('Calendar Component✨', () => {
       });
 
       const weekdayTexts = getAllByTestId(TEST_IDS.WEEKDAY_HEADER.WEEKDAY_TEXT);
-      expectTextStyleToMatch(weekdayTexts[0], { color: 'red' });
-      expectTextStyleToMatch(weekdayTexts[6], { color: 'red' });
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.SUNDAY], { color: 'red' });
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.SATURDAY], { color: 'red' });
 
       expectViewStyleToMatch(getAllByTestId(TEST_IDS.DAY.DAY_BUTTON)[3], {
         backgroundColor: 'red',
-      }); // selected date
+      }); // selected date(2025-01-01)
 
       // backgroundColor
       expectViewStyleToMatch(getByTestId(TEST_IDS.CALENDAR.CONTAINER), {
@@ -184,7 +185,7 @@ describe('Calendar Component✨', () => {
       });
 
       // textColor
-      expectTextStyleToMatch(weekdayTexts[1], { color: 'yellow' });
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.MONDAY], { color: 'yellow' });
       expectTextStyleToMatch(getByText('10'), { color: 'yellow' });
     });
   });
