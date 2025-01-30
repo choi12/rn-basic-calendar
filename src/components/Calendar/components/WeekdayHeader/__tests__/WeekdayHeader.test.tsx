@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 
 import WeekdayHeader from '../';
-import { WEEKDAYS, COLORS, TEST_IDS } from '../../../../../constants';
+import { WEEKDAYS, COLORS, TEST_IDS, WEEKDAY_INDEXES } from '../../../../../constants';
 import { expectTextStyleToMatch, expectViewStyleToMatch } from '../../../../../testUtils';
 import { WeekdayHeaderProps } from '../types';
 
@@ -45,11 +45,11 @@ describe('WeekdayHeader Component✨', () => {
     it('applies weekend styles', () => {
       const { getAllByTestId } = renderWeekdayHeaderComponent();
 
-      const texts = getAllByTestId(TEST_IDS.WEEKDAY_HEADER.WEEKDAY_TEXT);
+      const weekdayTexts = getAllByTestId(TEST_IDS.WEEKDAY_HEADER.WEEKDAY_TEXT);
 
-      expectTextStyleToMatch(texts[0], { color: COLORS.PRIMARY }); // sunday
-      expectTextStyleToMatch(texts[6], { color: COLORS.PRIMARY }); // saturday
-      expectTextStyleToMatch(texts[1], { color: COLORS.BLACK }); // weekday
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.SUNDAY], { color: COLORS.PRIMARY });
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.SATURDAY], { color: COLORS.PRIMARY });
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.MONDAY], { color: COLORS.BLACK });
     });
 
     it('applies custom styles', () => {
@@ -62,11 +62,11 @@ describe('WeekdayHeader Component✨', () => {
         styles: customStyles,
       });
 
-      const texts = getAllByTestId(TEST_IDS.WEEKDAY_HEADER.WEEKDAY_TEXT);
+      const weekdayTexts = getAllByTestId(TEST_IDS.WEEKDAY_HEADER.WEEKDAY_TEXT);
 
       expectViewStyleToMatch(getByTestId(TEST_IDS.WEEKDAY_HEADER.CONTAINER), { padding: 30 });
-      expectTextStyleToMatch(texts[1], { fontSize: 18 }); // weekday
-      expectTextStyleToMatch(texts[0], { fontSize: 19 }); // weekend
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.MONDAY], { fontSize: 18 });
+      expectTextStyleToMatch(weekdayTexts[WEEKDAY_INDEXES.SATURDAY], { fontSize: 19 });
     });
   });
 });

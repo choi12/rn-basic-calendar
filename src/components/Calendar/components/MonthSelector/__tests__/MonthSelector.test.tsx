@@ -5,9 +5,9 @@ import { render, fireEvent } from '@testing-library/react-native';
 import MonthSelector from '../';
 import { MONTH_FORMAT, NAVIGATION_BUTTON_TEXT, TEST_IDS } from '../../../../../constants';
 import {
+  BASE_TEST_DATE,
   expectTextStyleToMatch,
   expectViewStyleToMatch,
-  BASE_TEST_DATE,
 } from '../../../../../testUtils';
 import { MonthSelectorProps } from '../types';
 

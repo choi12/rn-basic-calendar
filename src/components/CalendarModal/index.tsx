@@ -7,6 +7,7 @@ import { Calendar } from '../Calendar';
 import { defaultStyles } from './styles';
 import { getContainerStyles, getOverlayStyles } from './styleUtils';
 import { CalendarModalProps } from './types';
+import { validateModalProps } from './validateModalProps';
 
 export function CalendarModal({
   isVisible,
@@ -23,6 +24,13 @@ export function CalendarModal({
   overlayOpacity = 0.4,
   markedDates = [],
 }: CalendarModalProps) {
+  validateModalProps({
+    isVisible,
+    onClose,
+    overlayOpacity,
+    title,
+  });
+
   const overlayStyles = getOverlayStyles(overlayOpacity, styles);
   const containerStyles = getContainerStyles(styles, colors);
 

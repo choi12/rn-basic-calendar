@@ -1,4 +1,4 @@
 export * from './constants/testDate';
-export * from './hooks';
+export * from './calendarHooks';
 export * from './setupTestDate';
 export * from './styleMatchers';

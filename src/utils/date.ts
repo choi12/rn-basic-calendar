@@ -1,5 +1,7 @@
 import { Dayjs } from 'dayjs';
 
+import { WEEKDAY_INDEXES } from '../constants';
+
 export const isDateOutOfRange = (
   date: Dayjs,
   currentMonth: Dayjs,
@@ -19,5 +21,5 @@ export const isMonthLimit = (currentMonth: Dayjs, boundaryDate?: Dayjs): boolean
 };
 
 export const checkWeekend = (weekdayIndex: number): boolean => {
-  return weekdayIndex === 0 || weekdayIndex === 6;
+  return weekdayIndex === WEEKDAY_INDEXES.SUNDAY || weekdayIndex === WEEKDAY_INDEXES.SATURDAY;
 };
