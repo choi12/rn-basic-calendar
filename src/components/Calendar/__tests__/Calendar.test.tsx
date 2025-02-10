@@ -20,6 +20,7 @@ describe('Calendar Component✨', () => {
 
   const defaultProps: CalendarProps = {
     value: testDate,
+    defaultValue: testDate,
     onChange: mockOnChange,
   };
 
