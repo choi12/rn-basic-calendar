@@ -15,6 +15,7 @@ describe('CalendarModal Component✨', () => {
   const defaultProps: CalendarModalProps = {
     isVisible: true,
     value: testDate,
+    defaultValue: testDate,
     onChange: mockOnChange,
     onClose: mockOnClose,
   };

@@ -26,7 +26,7 @@ describe('useCalendarState✨', () => {
 
   describe('navigation', () => {
     it('navigates between months', () => {
-      const { result } = renderCalendarStateHook();
+      const { result } = renderCalendarStateHook({ initialDate: testDate });
 
       act(() => {
         result.current.handlePrevMonth();
