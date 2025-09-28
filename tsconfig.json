@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2017",
     "module": "commonjs",
-    "lib": ["ESNext"],
+    "lib": ["ES2017"],
     "jsx": "react-native",
     "declaration": true,
+    "declarationMap": true,
     "outDir": "lib",
     "rootDir": "src",
     "strict": true,
@@ -16,10 +17,8 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@testing-library/*": ["./node_modules/@testing-library/*"]
-    }
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "."
   },
   "include": ["src"],
   "exclude": [
@@ -28,6 +27,8 @@
     "**/__tests__/**",
     "**/*.test.tsx",
     "**/*.test.ts",
-    "src/testUtils/**"
+    "**/*.stories.tsx",
+    "src/testUtils/**",
+    "src/stories/**"
   ]
 }
