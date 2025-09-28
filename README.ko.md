@@ -8,6 +8,14 @@ React Native 앱을 위한 가볍고 커스터마이징 가능한 캘린더 컴�
 [![npm version](https://img.shields.io/npm/v/%40choi12%2Frn-basic-calendar)](https://www.npmjs.com/package/@choi12/rn-basic-calendar)
 [![License](https://img.shields.io/npm/l/%40choi12%2Frn-basic-calendar)](https://github.com/choi12/rn-basic-calendar/blob/main/LICENSE)
 
+
+## 📚 라이브 데모
+
+**[👀 Storybook 데모 보기](https://choi12.github.io/rn-basic-calendar/)**
+
+Storybook 문서에서 컴포넌트와 Props를 인터랙티브하게 탐색해 보세요.
+
+
 ## 스크린샷
 
 <p>
@@ -241,7 +249,33 @@ const customStyles = {
 ```
 
 
-## 테스트
+## 개발
+
+### Storybook 로컬 실행
+
+```bash
+# 의존성 설치
+npm install
+# or
+yarn install
+
+# Storybook 개발 서버 시작
+npm run storybook
+# or
+yarn storybook
+```
+
+그 다음 [http://localhost:4000](http://localhost:4000)에서 Storybook을 확인하세요.
+
+### Storybook 빌드
+
+```bash
+npm run build-storybook
+# or
+yarn build-storybook
+```
+
+### 테스트
 
 이 패키지는 모든 컴포넌트와 유틸리티에 대한 포괄적인 테스트를 포함하고 있습니다:
 

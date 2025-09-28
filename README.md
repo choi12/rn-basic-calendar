@@ -9,6 +9,14 @@ Available in both English and Korean languages.
 [![npm version](https://img.shields.io/npm/v/%40choi12%2Frn-basic-calendar)](https://www.npmjs.com/package/@choi12/rn-basic-calendar)
 [![License](https://img.shields.io/npm/l/%40choi12%2Frn-basic-calendar)](https://github.com/choi12/rn-basic-calendar/blob/main/LICENSE)
 
+
+## 📚 Live Demo
+
+**[👀 View Storybook Demo](https://choi12.github.io/rn-basic-calendar/)**
+
+Explore components and their props interactively in our Storybook documentation.
+
+
 ## Screenshots
 
 <p>
@@ -242,7 +250,33 @@ const customStyles = {
 ```
 
 
-## Testing
+## Development
+
+### Running Storybook Locally
+
+```bash
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Start Storybook development server
+npm run storybook
+# or
+yarn storybook
+```
+
+Then open [http://localhost:4000](http://localhost:4000) to view the Storybook.
+
+### Building Storybook
+
+```bash
+npm run build-storybook
+# or
+yarn build-storybook
+```
+
+### Testing
 
 The package includes comprehensive test coverage for all components and utilities:
 

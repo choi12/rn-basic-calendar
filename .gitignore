@@ -1,4 +1,20 @@
+# Dependencies
 node_modules/
+
+# Build outputs
 lib/
+storybook-static/
+
+# System files
 .DS_Store
 *.log
+
+# Test coverage
+coverage/
+
+# TypeScript & ESLint cache
+*.tsbuildinfo
+.eslintcache
+
+# NPM package files
+*.tgz
