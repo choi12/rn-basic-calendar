@@ -78,7 +78,7 @@ This package requires the following peer dependencies:
 ```json
 {
     "dayjs": "^1.11.0",
-    "react": "^17.0.0 || ^18.0.0",
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-native": ">=0.65.0 <1.0.0"
 }
 ```
