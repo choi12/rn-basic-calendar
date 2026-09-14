@@ -35,8 +35,6 @@ Explore components and their props interactively in our Storybook documentation.
 </p>
 
 - 새싹일기 - A journaling app using CalendarModal component for date selection
-  - [App Store](https://apps.apple.com/kr/app/feed-diary/id6477572993)
-  - [Google Play](https://play.google.com/store/apps/details?id=com.choi12.feeddiary)
 
 
 ## Features

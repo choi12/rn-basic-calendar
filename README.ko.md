@@ -34,8 +34,6 @@ Storybook 문서에서 컴포넌트와 Props를 인터랙티브하게 탐색해 
 </p>
 
 - 새싹일기 - CalendarModal 컴포넌트를 사용하여 날짜를 선택하는 일기 앱
-  - [App Store](https://apps.apple.com/kr/app/feed-diary/id6477572993)
-  - [Google Play](https://play.google.com/store/apps/details?id=com.choi12.feeddiary)
 
 
 ## 주요 기능
