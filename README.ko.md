@@ -149,7 +149,7 @@ const CalendarModalExample = () => {
 | onChange     | (date: CalendarDay)=>void| 예   | -         | 날짜가 선택될 때 호출되는 콜백          |
 | minDate      | CalendarDay              | 아니오| -         | 선택 가능한 최소 날짜                   |
 | maxDate      | CalendarDay              | 아니오| -         | 선택 가능한 최대 날짜                   |
-| defaultValue | CalendarDay              | 아니오| dayjs()   | 기본 선택 날짜                         |
+| defaultValue | CalendarDay              | 아니오| dayjs()   | 처음 보여 줄 달 (선택값은 `value`)        |
 | language     | 'en' \| 'ko'             | 아니오| 'en'      | 캘린더 언어                            |
 | styles       | CalendarStyles           | 아니오| {}        | 커스텀 스타일 객체                      |
 | colors       | CalendarColors           | 아니오| {}        | 커스텀 색상 객체                        |

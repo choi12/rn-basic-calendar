@@ -150,7 +150,7 @@ const CalendarModalExample = () => {
 | onChange     | (date: CalendarDay)=>void| Yes      | -         | Callback when a date is selected                |
 | minDate      | CalendarDay              | No       | -         | Minimum selectable date                         |
 | maxDate      | CalendarDay              | No       | -         | Maximum selectable date                         |
-| defaultValue | CalendarDay              | No       | dayjs()   | Default selected date                           |
+| defaultValue | CalendarDay              | No       | dayjs()   | Month shown first (the selection is `value`)    |
 | language     | 'en' \| 'ko'             | No       | 'en'      | Calendar language                               |
 | styles       | CalendarStyles           | No       | {}        | Custom styles object                            |
 | colors       | CalendarColors           | No       | {}        | Custom colors object                            |
