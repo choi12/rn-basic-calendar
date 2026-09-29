@@ -90,6 +90,12 @@ type CalendarDay = Dayjs; // 날짜 조작을 위한 dayjs 객체
 type MarkedDate = string; // 'YYYY-MM-DD' 형식의 날짜 문자열
 ```
 
+props 가 쓰는 스타일·색상 타입은 export 되어 있어 테마를 별도 파일로 둘 수 있습니다.
+
+```typescript
+import type { CalendarColors, CalendarStyles, CalendarModalStyles } from '@choi12/rn-basic-calendar';
+```
+
 
 ## 사용 방법
 

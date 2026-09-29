@@ -91,6 +91,12 @@ type CalendarDay = Dayjs; // dayjs object for date manipulation
 type MarkedDate = string; // Date string in 'YYYY-MM-DD' format
 ```
 
+The style and color types the props use are exported, so a theme can live in its own file:
+
+```typescript
+import type { CalendarColors, CalendarStyles, CalendarModalStyles } from '@choi12/rn-basic-calendar';
+```
+
 
 ## Usage
 
