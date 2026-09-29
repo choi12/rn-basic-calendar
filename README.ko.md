@@ -290,7 +290,6 @@ yarn build-storybook
 
 - **유틸리티**
   - Date 유틸리티: 범위 검증, 월 비교, 주말 확인
-  - Locale 유틸리티: 영어/한국어 언어 설정
 
 테스트 실행 방법:
 ```bash
