@@ -118,10 +118,15 @@ describe('validateCalendarProps✨', () => {
     const minDate = testDate.add(1, 'month');
     const maxDate = testDate.subtract(1, 'month');
 
-    it('throws error for invalid min/max date combination', () => {
+    it('throws only when minDate is on a later day than maxDate', () => {
       expect(() => callValidateCalendarProps({ minDate, maxDate })).toThrow(
         ERROR_MESSAGES.INVALID_MIN_MAX,
       );
+      // minDate={dayjs()} with a date-only maxDate for today is a one-day range, not a mistake
+      const now = testDate.startOf('day').add(15, 'hour');
+      expect(() =>
+        callValidateCalendarProps({ value: now, minDate: now, maxDate: testDate.startOf('day') }),
+      ).not.toThrow();
     });
 
     it('warns only when value is before the minDate day', () => {
