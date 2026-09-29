@@ -76,6 +76,39 @@ describe('Day Component✨', () => {
     });
   });
 
+  describe('accessibility', () => {
+    it('labels the full date in the selected language', () => {
+      const en = renderDayComponent();
+      expect(en.getByTestId(TEST_IDS.DAY.DAY_BUTTON).props.accessibilityLabel).toBe(
+        'January 1, 2025',
+      );
+
+      const ko = renderDayComponent({ language: 'ko' });
+      expect(ko.getByTestId(TEST_IDS.DAY.DAY_BUTTON).props.accessibilityLabel).toBe(
+        '2025년 1월 1일',
+      );
+
+      withMockToday(() => {
+        const today = renderDayComponent({ date: dayjs(), selectedDate: dayjs() });
+        expect(today.getByTestId(TEST_IDS.DAY.DAY_BUTTON).props.accessibilityLabel).toBe(
+          'January 24, 2025, Today',
+        );
+      });
+    });
+
+    it('exposes a button with selected and disabled state', () => {
+      const selected = renderDayComponent().getByTestId(TEST_IDS.DAY.DAY_BUTTON);
+      expect(selected.props.accessibilityRole).toBe('button');
+      expect(selected.props.accessibilityState).toEqual({ selected: true, disabled: false });
+
+      const disabled = renderDayComponent({
+        selectedDate: testDate.add(1, 'day'),
+        minDate: testDate.add(1, 'day'),
+      }).getByTestId(TEST_IDS.DAY.DAY_BUTTON);
+      expect(disabled.props.accessibilityState).toEqual({ selected: false, disabled: true });
+    });
+  });
+
   describe('localization', () => {
     it('renders Today label in selected language', () => {
       withMockToday(() => {

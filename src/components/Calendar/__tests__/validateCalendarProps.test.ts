@@ -21,6 +21,21 @@ describe('validateCalendarProps✨', () => {
   const callValidateCalendarProps = (props: Partial<CalendarProps>) =>
     validateCalendarProps({ ...validProps, ...props });
 
+  // state that can come from app data or the passing of time warns instead of throwing
+  const expectWarnOnly = (props: Partial<CalendarProps>, message: string) => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    expect(() => callValidateCalendarProps(props)).not.toThrow();
+    expect(warn).toHaveBeenCalledWith(message);
+    warn.mockRestore();
+  };
+
+  const expectNoWarning = (props: Partial<CalendarProps>) => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    expect(() => callValidateCalendarProps(props)).not.toThrow();
+    expect(warn).not.toHaveBeenCalled();
+    warn.mockRestore();
+  };
+
   describe('required props validation', () => {
     it('throws error for missing required props', () => {
       expect(() => callValidateCalendarProps({ value: undefined })).toThrow(
@@ -77,8 +92,9 @@ describe('validateCalendarProps✨', () => {
       );
     });
 
-    it('throws error for invalid marked date format', () => {
-      expect(() => callValidateCalendarProps({ markedDates: ['2025/01/01'] })).toThrow(
+    it('warns without throwing for invalid marked date format', () => {
+      expectWarnOnly(
+        { markedDates: ['2025-01-01', '2025/01/02'] },
         ERROR_MESSAGES.INVALID_MARKED_DATE_FORMAT,
       );
     });
@@ -108,25 +124,18 @@ describe('validateCalendarProps✨', () => {
       );
     });
 
-    it('throws only when value is before the minDate day', () => {
+    it('warns only when value is before the minDate day', () => {
       const minDate = testDate.add(1, 'month');
-      expect(() => callValidateCalendarProps({ minDate })).toThrow(ERROR_MESSAGES.INVALID_MIN_DATE);
+      expectWarnOnly({ minDate }, ERROR_MESSAGES.INVALID_MIN_DATE);
       // a day cell is selectable when it is on the same day as minDate, whatever the time
       const sameDayLater = testDate.startOf('day').add(15, 'hour');
-      expect(() =>
-        callValidateCalendarProps({ value: testDate.startOf('day'), minDate: sameDayLater }),
-      ).not.toThrow();
+      expectNoWarning({ value: testDate.startOf('day'), minDate: sameDayLater });
     });
 
-    it('throws only when value is after the maxDate day', () => {
-      expect(() => callValidateCalendarProps({ maxDate })).toThrow(ERROR_MESSAGES.INVALID_MAX_DATE);
+    it('warns only when value is after the maxDate day', () => {
+      expectWarnOnly({ maxDate }, ERROR_MESSAGES.INVALID_MAX_DATE);
       const sameDayEarlier = testDate.startOf('day');
-      expect(() =>
-        callValidateCalendarProps({
-          value: testDate.startOf('day').add(15, 'hour'),
-          maxDate: sameDayEarlier,
-        }),
-      ).not.toThrow();
+      expectNoWarning({ value: testDate.startOf('day').add(15, 'hour'), maxDate: sameDayEarlier });
     });
   });
 });

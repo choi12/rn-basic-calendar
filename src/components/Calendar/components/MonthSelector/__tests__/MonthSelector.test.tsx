@@ -70,6 +70,16 @@ describe('MonthSelector Component✨', () => {
       expect(mockNextMonth).not.toHaveBeenCalled();
     });
 
+    it('disables navigation when the shown month is already outside the range', () => {
+      const { getByTestId } = renderMonthSelectorComponent({
+        minDate: testDate.add(1, 'month'),
+        maxDate: testDate.subtract(1, 'month'),
+      });
+
+      expect(getByTestId(TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON)).toBeDisabled();
+      expect(getByTestId(TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON)).toBeDisabled();
+    });
+
     it('enables navigation within valid range', () => {
       const { getByTestId } = renderMonthSelectorComponent({
         minDate: testDate.subtract(1, 'month'),
@@ -87,6 +97,26 @@ describe('MonthSelector Component✨', () => {
 
       fireEvent.press(nextButton);
       expect(mockNextMonth).toHaveBeenCalled();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('labels navigation buttons in the selected language', () => {
+      const en = renderMonthSelectorComponent();
+      const prev = en.getByTestId(TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON);
+      expect(prev.props.accessibilityRole).toBe('button');
+      expect(prev.props.accessibilityLabel).toBe('Previous month');
+      expect(en.getByTestId(TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON).props.accessibilityLabel).toBe(
+        'Next month',
+      );
+
+      const ko = renderMonthSelectorComponent({ language: 'ko' });
+      expect(ko.getByTestId(TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON).props.accessibilityLabel).toBe(
+        '이전 달',
+      );
+      expect(ko.getByTestId(TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON).props.accessibilityLabel).toBe(
+        '다음 달',
+      );
     });
   });
 
