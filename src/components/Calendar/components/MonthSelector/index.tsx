@@ -8,7 +8,7 @@ import { defaultStyles } from './styles';
 import { getArrowStyles, getMonthTextStyles } from './styleUtils';
 import { MonthSelectorProps } from './types';
 import { MONTH_FORMAT, NAVIGATION_BUTTON_TEXT, TEST_IDS } from '../../../../constants';
-import { isMonthLimit } from '../../../../utils';
+import { isNextMonthBlocked, isPrevMonthBlocked } from '../../../../utils';
 
 function MonthSelector({
   selectedMonth,
@@ -20,8 +20,8 @@ function MonthSelector({
   styles = {},
   colors,
 }: MonthSelectorProps) {
-  const isPrevDisabled = isMonthLimit(selectedMonth, minDate);
-  const isNextDisabled = isMonthLimit(selectedMonth, maxDate);
+  const isPrevDisabled = isPrevMonthBlocked(selectedMonth, minDate);
+  const isNextDisabled = isNextMonthBlocked(selectedMonth, maxDate);
 
   const prevArrowStyles = getArrowStyles(isPrevDisabled, styles, colors);
   const nextArrowStyles = getArrowStyles(isNextDisabled, styles, colors);

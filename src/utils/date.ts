@@ -15,9 +15,15 @@ export const isDateOutOfRange = (
   return !isCurrentMonth || isBeforeMinDate || isAfterMaxDate;
 };
 
-export const isMonthLimit = (currentMonth: Dayjs, boundaryDate?: Dayjs): boolean => {
-  if (!boundaryDate) return false;
-  return currentMonth.isSame(boundaryDate, 'month');
+// the shown month can start outside the range (defaultValue before minDate), so block beyond the boundary too
+export const isPrevMonthBlocked = (currentMonth: Dayjs, minDate?: Dayjs): boolean => {
+  if (!minDate) return false;
+  return !currentMonth.isAfter(minDate, 'month');
+};
+
+export const isNextMonthBlocked = (currentMonth: Dayjs, maxDate?: Dayjs): boolean => {
+  if (!maxDate) return false;
+  return !currentMonth.isBefore(maxDate, 'month');
 };
 
 export const checkWeekend = (weekdayIndex: number): boolean => {

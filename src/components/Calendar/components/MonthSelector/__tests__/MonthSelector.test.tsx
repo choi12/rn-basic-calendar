@@ -70,6 +70,16 @@ describe('MonthSelector Component✨', () => {
       expect(mockNextMonth).not.toHaveBeenCalled();
     });
 
+    it('disables navigation when the shown month is already outside the range', () => {
+      const { getByTestId } = renderMonthSelectorComponent({
+        minDate: testDate.add(1, 'month'),
+        maxDate: testDate.subtract(1, 'month'),
+      });
+
+      expect(getByTestId(TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON)).toBeDisabled();
+      expect(getByTestId(TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON)).toBeDisabled();
+    });
+
     it('enables navigation within valid range', () => {
       const { getByTestId } = renderMonthSelectorComponent({
         minDate: testDate.subtract(1, 'month'),

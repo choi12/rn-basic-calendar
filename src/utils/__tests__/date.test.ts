@@ -1,6 +1,6 @@
 import { WEEKDAY_INDEXES, WEEKDAY_ONLY_INDEXES } from '../../constants';
 import { BASE_TEST_DATE } from '../../testUtils';
-import { isDateOutOfRange, isMonthLimit, checkWeekend } from '../date';
+import { isDateOutOfRange, isPrevMonthBlocked, isNextMonthBlocked, checkWeekend } from '../date';
 
 describe('Date Utilities✨', () => {
   const testDate = BASE_TEST_DATE;
@@ -30,17 +30,27 @@ describe('Date Utilities✨', () => {
     });
   });
 
-  describe('isMonthLimit()', () => {
-    it('checks if dates are in same month', () => {
-      expect(isMonthLimit(testDate, testDate)).toBe(true);
+  describe('isPrevMonthBlocked()', () => {
+    it('blocks at or before the minDate month', () => {
+      expect(isPrevMonthBlocked(testDate, testDate)).toBe(true);
+      expect(isPrevMonthBlocked(testDate.subtract(1, 'month'), testDate)).toBe(true);
     });
 
-    it('checks if dates are in different months', () => {
-      expect(isMonthLimit(testDate, testDate.add(1, 'month'))).toBe(false);
+    it('allows months after the minDate month or without minDate', () => {
+      expect(isPrevMonthBlocked(testDate.add(1, 'month'), testDate)).toBe(false);
+      expect(isPrevMonthBlocked(testDate, undefined)).toBe(false);
+    });
+  });
+
+  describe('isNextMonthBlocked()', () => {
+    it('blocks at or after the maxDate month', () => {
+      expect(isNextMonthBlocked(testDate, testDate)).toBe(true);
+      expect(isNextMonthBlocked(testDate.add(1, 'month'), testDate)).toBe(true);
     });
 
-    it('handles comparison with undefined dates', () => {
-      expect(isMonthLimit(testDate, undefined)).toBe(false);
+    it('allows months before the maxDate month or without maxDate', () => {
+      expect(isNextMonthBlocked(testDate.subtract(1, 'month'), testDate)).toBe(false);
+      expect(isNextMonthBlocked(testDate, undefined)).toBe(false);
     });
   });
 
