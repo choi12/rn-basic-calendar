@@ -108,13 +108,25 @@ describe('validateCalendarProps✨', () => {
       );
     });
 
-    it('throws error for invalid minDate', () => {
+    it('throws only when value is before the minDate day', () => {
       const minDate = testDate.add(1, 'month');
       expect(() => callValidateCalendarProps({ minDate })).toThrow(ERROR_MESSAGES.INVALID_MIN_DATE);
+      // a day cell is selectable when it is on the same day as minDate, whatever the time
+      const sameDayLater = testDate.startOf('day').add(15, 'hour');
+      expect(() =>
+        callValidateCalendarProps({ value: testDate.startOf('day'), minDate: sameDayLater }),
+      ).not.toThrow();
     });
 
-    it('throws error for invalid maxDate', () => {
+    it('throws only when value is after the maxDate day', () => {
       expect(() => callValidateCalendarProps({ maxDate })).toThrow(ERROR_MESSAGES.INVALID_MAX_DATE);
+      const sameDayEarlier = testDate.startOf('day');
+      expect(() =>
+        callValidateCalendarProps({
+          value: testDate.startOf('day').add(15, 'hour'),
+          maxDate: sameDayEarlier,
+        }),
+      ).not.toThrow();
     });
   });
 });
