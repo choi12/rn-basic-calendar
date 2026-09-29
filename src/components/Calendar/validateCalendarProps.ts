@@ -44,8 +44,9 @@ export function validateCalendarProps({
   if (!Array.isArray(markedDates)) {
     throw new Error(`"markedDates" ${ERROR_MESSAGES.INVALID_ARRAY}`);
   }
+  // may come from server data; a bad entry just never matches a day
   if (markedDates.some(date => !MARKER_REGEX.test(date))) {
-    throw new Error(ERROR_MESSAGES.INVALID_MARKED_DATE_FORMAT);
+    console.warn(ERROR_MESSAGES.INVALID_MARKED_DATE_FORMAT);
   }
 
   if (styles && typeof styles !== 'object') {
@@ -59,10 +60,11 @@ export function validateCalendarProps({
   if (minDate && maxDate && minDate.isAfter(maxDate)) {
     throw new Error(ERROR_MESSAGES.INVALID_MIN_MAX);
   }
+  // value can leave the range without a coding mistake (editing a past item, midnight passing)
   if (minDate && value.isBefore(minDate, 'day')) {
-    throw new Error(ERROR_MESSAGES.INVALID_MIN_DATE);
+    console.warn(ERROR_MESSAGES.INVALID_MIN_DATE);
   }
   if (maxDate && value.isAfter(maxDate, 'day')) {
-    throw new Error(ERROR_MESSAGES.INVALID_MAX_DATE);
+    console.warn(ERROR_MESSAGES.INVALID_MAX_DATE);
   }
 }
