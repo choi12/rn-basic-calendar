@@ -10,6 +10,7 @@
     "clean": "rm -rf lib",
     "reset": "rm -rf node_modules package-lock.json && npm install",
     "build": "tsc",
+    "prepublishOnly": "npm run clean && npm run build",
     "dev": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "pack:preview": "npm pack --dry-run",
