@@ -42,10 +42,18 @@ export function CalendarModal({
       onRequestClose={onClose}
       testID={TEST_IDS.CALENDAR_MODAL.MODAL}
     >
-      <Pressable style={overlayStyles} onPress={onClose} testID={TEST_IDS.CALENDAR_MODAL.OVERLAY}>
+      {/* Pressables are accessible by default, which would fold the whole calendar into one element */}
+      <Pressable
+        style={overlayStyles}
+        onPress={onClose}
+        accessible={false}
+        testID={TEST_IDS.CALENDAR_MODAL.OVERLAY}
+      >
         <Pressable
           style={containerStyles}
           onPress={() => {}}
+          accessible={false}
+          onAccessibilityEscape={onClose}
           testID={TEST_IDS.CALENDAR_MODAL.CONTAINER}
         >
           {title && <Text style={[defaultStyles.title, styles.modalTitleStyle]}>{title}</Text>}
