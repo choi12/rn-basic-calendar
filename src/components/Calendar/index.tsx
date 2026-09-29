@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { View } from 'react-native';
 
@@ -20,7 +20,6 @@ import { CalendarProps } from './types';
 import { validateCalendarProps } from './validateCalendarProps';
 import useCalendar from '../../hooks/useCalendar';
 import useCalendarState from '../../hooks/useCalendarState';
-import { setupLocale } from '../../utils';
 
 export function Calendar({
   value,
@@ -57,10 +56,6 @@ export function Calendar({
   const monthSelectorStyles = getMonthSelectorStyles(styles);
   const weekdayHeaderStyles = getWeekdayHeaderStyles(styles);
   const dayStyles = getDayStyles(styles);
-
-  useEffect(() => {
-    setupLocale(language);
-  }, [language]);
 
   return (
     <View style={containerStyles} testID={TEST_IDS.CALENDAR.CONTAINER}>

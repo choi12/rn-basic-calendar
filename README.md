@@ -291,7 +291,6 @@ The package includes comprehensive test coverage for all components and utilitie
 
 - **Utils**
   - Date utilities: Range validation, month comparison, and weekend checks
-  - Locale utilities: Language configuration for EN/KO support
 
 Run tests using:
 ```bash

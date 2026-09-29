@@ -2,6 +2,8 @@ import React from 'react';
 
 import { View, Pressable, Text } from 'react-native';
 
+import 'dayjs/locale/ko';
+
 import { defaultStyles } from './styles';
 import { getArrowStyles, getMonthTextStyles } from './styleUtils';
 import { MonthSelectorProps } from './types';

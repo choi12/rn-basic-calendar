@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react-native';
-import dayjs from 'dayjs';
+import dayjs, { locale } from 'dayjs';
 
 import { Calendar } from '../';
 import { MARKER_FORMAT, MONTH_FORMAT, TEST_IDS, WEEKDAY_INDEXES } from '../../../constants';
@@ -130,6 +130,26 @@ describe('Calendar Component✨', () => {
       const { queryAllByTestId } = renderCalendarComponent({ markedDates: [] });
 
       expect(queryAllByTestId(TEST_IDS.DAY.MARKER)).toHaveLength(0);
+    });
+  });
+
+  describe('locale', () => {
+    afterEach(() => {
+      locale('en');
+    });
+
+    it('renders in Korean without changing the global dayjs locale', () => {
+      const { getByText } = renderCalendarComponent({ language: 'ko' });
+
+      expect(getByText(testDate.format(MONTH_FORMAT.ko))).toBeTruthy();
+      expect(locale()).toBe('en');
+    });
+
+    it('keeps the global dayjs locale set by the host app', () => {
+      locale('ko');
+      renderCalendarComponent({ language: 'en' });
+
+      expect(locale()).toBe('ko');
     });
   });
 
