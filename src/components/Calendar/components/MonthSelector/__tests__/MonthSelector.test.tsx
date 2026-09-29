@@ -100,6 +100,26 @@ describe('MonthSelector Component✨', () => {
     });
   });
 
+  describe('accessibility', () => {
+    it('labels navigation buttons in the selected language', () => {
+      const en = renderMonthSelectorComponent();
+      const prev = en.getByTestId(TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON);
+      expect(prev.props.accessibilityRole).toBe('button');
+      expect(prev.props.accessibilityLabel).toBe('Previous month');
+      expect(en.getByTestId(TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON).props.accessibilityLabel).toBe(
+        'Next month',
+      );
+
+      const ko = renderMonthSelectorComponent({ language: 'ko' });
+      expect(ko.getByTestId(TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON).props.accessibilityLabel).toBe(
+        '이전 달',
+      );
+      expect(ko.getByTestId(TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON).props.accessibilityLabel).toBe(
+        '다음 달',
+      );
+    });
+  });
+
   describe('localization', () => {
     it('renders month name in selected language', () => {
       const { getByText, rerender } = renderMonthSelectorComponent({ language: 'en' });

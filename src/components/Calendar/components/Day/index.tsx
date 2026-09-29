@@ -3,6 +3,7 @@ import React, { memo, useCallback, useMemo } from 'react';
 import { Text, View, Pressable } from 'react-native';
 
 import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
 
 import {
   getContainerStyles,
@@ -11,7 +12,7 @@ import {
   getTodayLabelStyles,
 } from './styleUtils';
 import { DayProps } from './types';
-import { MARKER_FORMAT, TEST_IDS, TODAY_LABEL } from '../../../../constants';
+import { DAY_LABEL_FORMAT, MARKER_FORMAT, TEST_IDS, TODAY_LABEL } from '../../../../constants';
 import { checkWeekend, isDateOutOfRange } from '../../../../utils';
 
 function Day({
@@ -41,6 +42,9 @@ function Day({
   const todayLabelStyles = getTodayLabelStyles(isSelected, styles, colors);
   const markerStyles = getMarkerStyles(isSelected, styles, colors);
 
+  const dateLabel = date.locale(language).format(DAY_LABEL_FORMAT[language]);
+  const accessibilityLabel = isToday ? `${dateLabel}, ${TODAY_LABEL[language]}` : dateLabel;
+
   const handlePress = useCallback(() => {
     onSelect(date);
   }, [onSelect, date]);
@@ -50,6 +54,9 @@ function Day({
       style={containerStyles}
       onPress={handlePress}
       disabled={isDisabled}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ selected: !!isSelected, disabled: isDisabled }}
       testID={TEST_IDS.DAY.DAY_BUTTON}
     >
       <Text style={textStyles}>{date.date()}</Text>

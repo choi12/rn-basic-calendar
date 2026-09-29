@@ -7,7 +7,12 @@ import 'dayjs/locale/ko';
 import { defaultStyles } from './styles';
 import { getArrowStyles, getMonthTextStyles } from './styleUtils';
 import { MonthSelectorProps } from './types';
-import { MONTH_FORMAT, NAVIGATION_BUTTON_TEXT, TEST_IDS } from '../../../../constants';
+import {
+  MONTH_FORMAT,
+  NAVIGATION_BUTTON_TEXT,
+  NAVIGATION_LABEL,
+  TEST_IDS,
+} from '../../../../constants';
 import { isNextMonthBlocked, isPrevMonthBlocked } from '../../../../utils';
 
 function MonthSelector({
@@ -35,6 +40,8 @@ function MonthSelector({
       <Pressable
         onPress={onPreviousMonth}
         disabled={isPrevDisabled}
+        accessibilityRole="button"
+        accessibilityLabel={NAVIGATION_LABEL[language].PREV}
         style={[defaultStyles.button, styles.buttonStyle]}
         testID={TEST_IDS.MONTH_SELECTOR.PREVIOUS_BUTTON}
       >
@@ -48,6 +55,8 @@ function MonthSelector({
       <Pressable
         onPress={onNextMonth}
         disabled={isNextDisabled}
+        accessibilityRole="button"
+        accessibilityLabel={NAVIGATION_LABEL[language].NEXT}
         style={[defaultStyles.button, styles.buttonStyle]}
         testID={TEST_IDS.MONTH_SELECTOR.NEXT_BUTTON}
       >
