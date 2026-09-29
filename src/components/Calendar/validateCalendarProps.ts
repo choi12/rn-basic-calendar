@@ -59,10 +59,10 @@ export function validateCalendarProps({
   if (minDate && maxDate && minDate.isAfter(maxDate)) {
     throw new Error(ERROR_MESSAGES.INVALID_MIN_MAX);
   }
-  if (minDate && value.isBefore(minDate)) {
+  if (minDate && value.isBefore(minDate, 'day')) {
     throw new Error(ERROR_MESSAGES.INVALID_MIN_DATE);
   }
-  if (maxDate && value.isAfter(maxDate)) {
+  if (maxDate && value.isAfter(maxDate, 'day')) {
     throw new Error(ERROR_MESSAGES.INVALID_MAX_DATE);
   }
 }
