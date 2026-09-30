@@ -25,9 +25,12 @@ describe('CalendarModal Component✨', () => {
 
   describe('initialization', () => {
     it('shows/hides based on isVisible prop', () => {
-      const { getByTestId, rerender } = renderCalendarModalComponent({ isVisible: false });
+      const { queryByTestId, getByTestId, rerender } = renderCalendarModalComponent({
+        isVisible: false,
+      });
 
-      expect(getByTestId(TEST_IDS.CALENDAR_MODAL.MODAL).props.visible).toBe(false);
+      // React Native's Modal mock renders nothing while hidden, so the host element is absent
+      expect(queryByTestId(TEST_IDS.CALENDAR_MODAL.MODAL)).toBeNull();
 
       rerender(<CalendarModal {...defaultProps} isVisible={true} />);
 

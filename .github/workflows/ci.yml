@@ -18,7 +18,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      # .npmrc sets legacy-peer-deps for the Storybook peer conflicts, so npm ci resolves as it does locally
+      # Peer ranges resolve cleanly, so no .npmrc flags are needed here or locally
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
