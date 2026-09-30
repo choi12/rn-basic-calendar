@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { StyleSheet } from 'react-native';
+
 import { render, fireEvent } from '@testing-library/react-native';
 import dayjs from 'dayjs';
 
@@ -142,6 +144,15 @@ describe('Day Component✨', () => {
       expectViewStyleToMatch(getByTestId(TEST_IDS.DAY.DAY_BUTTON), {
         backgroundColor: COLORS.PRIMARY,
       });
+    });
+
+    it('does not highlight the selected date in a cell of another month', () => {
+      // Jan 1 shown as a trailing cell of December must not look selected (disabled gray on primary)
+      const { getByTestId } = renderDayComponent({ currentMonth: testDate.subtract(1, 'month') });
+      const button = getByTestId(TEST_IDS.DAY.DAY_BUTTON);
+
+      expect(StyleSheet.flatten(button.props.style).backgroundColor).not.toBe(COLORS.PRIMARY);
+      expect(button.props.accessibilityState).toEqual({ selected: false, disabled: true });
     });
 
     it('applies custom styles', () => {

@@ -57,7 +57,7 @@ export function validateCalendarProps({
   }
 
   // date range
-  if (minDate && maxDate && minDate.isAfter(maxDate)) {
+  if (minDate && maxDate && minDate.isAfter(maxDate, 'day')) {
     throw new Error(ERROR_MESSAGES.INVALID_MIN_MAX);
   }
   // value can leave the range without a coding mistake (editing a past item, midnight passing)

@@ -28,7 +28,9 @@ function Day({
   colors,
   markedDates = [],
 }: DayProps) {
-  const isSelected = selectedDate && date.isSame(selectedDate, 'day');
+  // a leading/trailing cell of another month is disabled, so it never shows as selected
+  const isSelected =
+    selectedDate && date.isSame(selectedDate, 'day') && date.isSame(currentMonth, 'month');
   const isToday = date.isSame(dayjs(), 'day');
   const isWeekend = checkWeekend(weekdayIndex);
   const isDisabled = isDateOutOfRange(date, currentMonth, minDate, maxDate);

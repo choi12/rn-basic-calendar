@@ -90,6 +90,12 @@ type CalendarDay = Dayjs; // 날짜 조작을 위한 dayjs 객체
 type MarkedDate = string; // 'YYYY-MM-DD' 형식의 날짜 문자열
 ```
 
+props 가 쓰는 스타일·색상 타입은 export 되어 있어 테마를 별도 파일로 둘 수 있습니다.
+
+```typescript
+import type { CalendarColors, CalendarStyles, CalendarModalStyles } from '@choi12/rn-basic-calendar';
+```
+
 
 ## 사용 방법
 
@@ -171,7 +177,7 @@ Calendar Props를 상속하며 추가적으로 다음 속성들을 가집니다:
 
 Props는 렌더할 때마다 검사합니다.
 
-- **에러를 던집니다**: 호출하는 코드의 실수입니다. `value`/`onChange`(모달은 `isVisible`/`onClose`) 누락, 잘못된 타입, 지원하지 않는 `language`, 0–1 밖의 `overlayOpacity`, `maxDate`보다 뒤인 `minDate`입니다. 렌더 중에 던지므로 JSX를 `try/catch`로 감싸서는 잡히지 않고 [Error Boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)로 잡습니다. 근본적인 해결은 호출하는 코드를 고치는 것입니다.
+- **에러를 던집니다**: 호출하는 코드의 실수입니다. `value`/`onChange`(모달은 `isVisible`/`onClose`) 누락, 잘못된 타입, 지원하지 않는 `language`, 0–1 밖의 `overlayOpacity`, `maxDate`보다 뒤 날짜인 `minDate`입니다. 렌더 중에 던지므로 JSX를 `try/catch`로 감싸서는 잡히지 않고 [Error Boundary](https://ko.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)로 잡습니다. 근본적인 해결은 호출하는 코드를 고치는 것입니다.
 - **경고만 하고 계속 그립니다**: 앱 데이터나 시간이 지나면서 생길 수 있는 상태입니다. `minDate`/`maxDate` 밖의 `value`(예: `minDate={dayjs()}`로 과거 항목을 수정할 때), `YYYY-MM-DD` 형식이 아닌 `markedDates` 항목입니다. 범위 밖 날짜는 계속 비활성화되고, 형식이 틀린 항목은 무시됩니다.
 
 

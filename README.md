@@ -91,6 +91,12 @@ type CalendarDay = Dayjs; // dayjs object for date manipulation
 type MarkedDate = string; // Date string in 'YYYY-MM-DD' format
 ```
 
+The style and color types the props use are exported, so a theme can live in its own file:
+
+```typescript
+import type { CalendarColors, CalendarStyles, CalendarModalStyles } from '@choi12/rn-basic-calendar';
+```
+
 
 ## Usage
 
@@ -172,7 +178,7 @@ Extends Calendar Props with additional properties:
 
 Props are checked on every render.
 
-- **Throws**: mistakes in the calling code. A missing `value`/`onChange` (or `isVisible`/`onClose` on the modal), a wrong type, an unsupported `language`, `overlayOpacity` outside 0–1, or `minDate` after `maxDate`. The error is thrown during render, so catch it with an [Error Boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary), not `try/catch` around the JSX. Fixing the calling code is the real fix.
+- **Throws**: mistakes in the calling code. A missing `value`/`onChange` (or `isVisible`/`onClose` on the modal), a wrong type, an unsupported `language`, `overlayOpacity` outside 0–1, or `minDate` on a later day than `maxDate`. The error is thrown during render, so catch it with an [Error Boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary), not `try/catch` around the JSX. Fixing the calling code is the real fix.
 - **Warns and keeps rendering**: state that can come from app data or the passing of time. `value` outside `minDate`/`maxDate` (e.g. editing a past item with `minDate={dayjs()}`), or a `markedDates` entry not in `YYYY-MM-DD`. Out-of-range days stay disabled, and bad entries are ignored.
 
 

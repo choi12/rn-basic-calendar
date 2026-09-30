@@ -10,7 +10,7 @@ export const ERROR_MESSAGES = {
   INVALID_ARRAY: 'must be an array',
   INVALID_OBJECT: 'must be an object',
 
-  INVALID_LANGUAGE: '"language" must be either "en" or "ko',
+  INVALID_LANGUAGE: '"language" must be either "en" or "ko"',
   INVALID_MARKED_DATE_FORMAT: `"markedDates" must be in ${MARKER_FORMAT} format`,
   INVALID_OPACITY: '"overlayOpacity" must be a number between 0 and 1',
 

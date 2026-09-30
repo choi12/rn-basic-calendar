@@ -70,6 +70,23 @@ describe('CalendarModal Component✨', () => {
     });
   });
 
+  describe('accessibility', () => {
+    it('keeps day cells reachable by not grouping them into the overlay', () => {
+      const { getByTestId } = renderCalendarModalComponent();
+
+      expect(getByTestId(TEST_IDS.CALENDAR_MODAL.OVERLAY).props.accessible).toBe(false);
+      expect(getByTestId(TEST_IDS.CALENDAR_MODAL.CONTAINER).props.accessible).toBe(false);
+    });
+
+    it('closes on the screen reader escape gesture', () => {
+      mockOnClose.mockClear();
+      const { getByTestId } = renderCalendarModalComponent();
+
+      fireEvent(getByTestId(TEST_IDS.CALENDAR_MODAL.CONTAINER), 'accessibilityEscape');
+      expect(mockOnClose).toHaveBeenCalled();
+    });
+  });
+
   describe('styling', () => {
     it('applies overlay opacity', () => {
       const { getByTestId } = renderCalendarModalComponent({ overlayOpacity: 0.8 });
