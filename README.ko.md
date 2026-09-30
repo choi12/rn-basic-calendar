@@ -7,7 +7,7 @@ React Native 앱을 위한 가볍고 커스터마이징 가능한 캘린더 컴�
 
 [![npm version](https://img.shields.io/npm/v/%40choi12%2Frn-basic-calendar)](https://www.npmjs.com/package/@choi12/rn-basic-calendar)
 [![License](https://img.shields.io/npm/l/%40choi12%2Frn-basic-calendar)](https://github.com/choi12/rn-basic-calendar/blob/main/LICENSE)
-[![CI](https://github.com/choi12/rn-basic-calendar/actions/workflows/ci.yml/badge.svg)](https://github.com/choi12/rn-basic-calendar/actions/workflows/ci.yml)
+[![CI](https://github.com/choi12/rn-basic-calendar/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/choi12/rn-basic-calendar/actions/workflows/ci.yml)
 
 
 ## 📚 라이브 데모
@@ -263,6 +263,8 @@ const customStyles = {
 
 
 ## 개발
+
+개발 도구(react-native 0.87 등)는 Node 22.13 이상이 필요합니다. 배포되는 패키지 자체는 `engines.node >=16` 그대로입니다.
 
 ### Storybook 로컬 실행
 
