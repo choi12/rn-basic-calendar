@@ -1,1 +1,0 @@
-const e={parameters:{controls:{matchers:{date:/Date$/}},backgrounds:{default:"light",values:[{name:"light",value:"#fff"},{name:"dark",value:"#333"}]},options:{storySort:{order:["Components",["Calendar",["Default"]]]}}}};export{e as default};
