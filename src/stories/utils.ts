@@ -1,4 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs';
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 export const parseMarkedDates = (markedDates: string | string[]): string[] => {
   if (Array.isArray(markedDates)) {
@@ -135,8 +136,9 @@ export const calendarModalArgTypes = {
 
 export const storyParameters = {
   layout: 'centered' as const,
+  // Storybook 9+ picks the viewport through globals (see storyGlobals); parameters only list the options
   viewport: {
-    defaultViewport: 'iphone13pro',
+    options: INITIAL_VIEWPORTS,
   },
   controls: {
     expanded: true,
@@ -151,4 +153,8 @@ export const storyParameters = {
 export const defaultStoryArgs = {
   initialValue: dayjs().subtract(2, 'day').toDate(),
   language: 'en' as const,
+};
+
+export const storyGlobals = {
+  viewport: { value: 'iphone13pro', isRotated: false },
 };

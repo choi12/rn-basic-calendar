@@ -264,7 +264,7 @@ const customStyles = {
 
 ## 개발
 
-개발 도구(react-native 0.87 등)는 Node 22.13 이상이 필요합니다. 배포되는 패키지 자체는 `engines.node >=16` 그대로입니다.
+개발 도구(react-native 0.87 등)는 Node 22.13 이상(24 계열은 24.3 이상)이 필요합니다. 배포되는 패키지 자체는 `engines.node >=16` 그대로입니다.
 
 ### Storybook 로컬 실행
 

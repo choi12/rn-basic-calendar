@@ -265,7 +265,7 @@ const customStyles = {
 
 ## Development
 
-Development tooling (react-native 0.87 and friends) needs Node 22.13 or newer. The published package itself keeps `engines.node >=16`.
+Development tooling (react-native 0.87 and friends) needs Node 22.13 or newer (24.3 or newer on the 24 line). The published package itself keeps `engines.node >=16`.
 
 ### Running Storybook Locally
 
