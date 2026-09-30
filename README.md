@@ -8,6 +8,7 @@ Available in both English and Korean languages.
 
 [![npm version](https://img.shields.io/npm/v/%40choi12%2Frn-basic-calendar)](https://www.npmjs.com/package/@choi12/rn-basic-calendar)
 [![License](https://img.shields.io/npm/l/%40choi12%2Frn-basic-calendar)](https://github.com/choi12/rn-basic-calendar/blob/main/LICENSE)
+[![CI](https://github.com/choi12/rn-basic-calendar/actions/workflows/ci.yml/badge.svg)](https://github.com/choi12/rn-basic-calendar/actions/workflows/ci.yml)
 
 
 ## 📚 Live Demo
