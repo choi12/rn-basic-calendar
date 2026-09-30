@@ -11,6 +11,7 @@ import {
   toDayjs,
   generateSampleMarkedDates,
   calendarArgTypes,
+  storyGlobals,
   storyParameters,
   defaultStoryArgs,
 } from '../../stories/utils';
@@ -48,6 +49,7 @@ const meta: Meta<typeof CalendarWrapper> = {
   title: 'Components/Calendar',
   component: CalendarWrapper,
   parameters: storyParameters,
+  globals: storyGlobals,
   argTypes: calendarArgTypes,
   args: defaultStoryArgs,
 };
