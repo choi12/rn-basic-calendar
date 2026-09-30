@@ -115,8 +115,9 @@ export const DarkMode: Story = {
     controls: {
       include: ['colors'],
     },
-    backgrounds: { default: 'dark' },
   },
+  // Storybook 9+ selects the canvas background through globals, not `parameters.backgrounds.default`
+  globals: { backgrounds: { value: 'dark' } },
 };
 
 export const Playground: Story = {
