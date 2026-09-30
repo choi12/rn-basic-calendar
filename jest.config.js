@@ -1,8 +1,6 @@
 module.exports = {
-  preset: 'react-native',
+  preset: '@react-native/jest-preset',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  setupFiles: ['./jest.setup.js'],
-  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   transformIgnorePatterns: ['node_modules/(?!(react-native|@react-native|dayjs)/)'],
   testEnvironment: 'node',
   moduleNameMapper: {

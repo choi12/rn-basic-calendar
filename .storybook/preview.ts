@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-native-web-vite';
 
 const preview: Preview = {
   parameters: {
@@ -8,17 +8,19 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#fff' },
-        { name: 'dark', value: '#333' },
-      ],
+      options: {
+        light: { name: 'light', value: '#fff' },
+        dark: { name: 'dark', value: '#333' },
+      },
     },
     options: {
       storySort: {
         order: ['Components', ['Calendar', ['Default']]],
       },
     },
+  },
+  initialGlobals: {
+    backgrounds: { value: 'light' },
   },
 };
 
