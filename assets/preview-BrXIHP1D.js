@@ -1,1 +1,0 @@
-import{e as o}from"./react-Bag-gQYn.js";import{e}from"./entry-preview-docs-CSqGFqXG.js";import{L as t}from"./iframe-DtoQJCWm.js";import"./chunk-XP5HYGXS-D5tuasO7.js";import"./index-pcvojpNF.js";import"./index-Cd2PieYj.js";function d(r){return t({...r,addons:[o,e,...r.addons??[]]})}export{d as __definePreview};
